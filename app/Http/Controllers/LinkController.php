@@ -46,7 +46,7 @@ class LinkController extends Controller
      */
     public function edit(Link $link)
     {
-        //
+        return view('links.edit', compact('link'));
     }
 
     /**
@@ -54,7 +54,9 @@ class LinkController extends Controller
      */
     public function update(UpdateLinkRequest $request, Link $link)
     {
-        //
+        $link->fill($request->validated())->save();
+
+        return to_route('dashboard')->with('message', 'Alterado com sucesso!');
     }
 
     /**
