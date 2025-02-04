@@ -30,10 +30,7 @@ class Link extends Model
         $order = $this->sort;
         $newOrder = $order + $to;
 
-        /** @var User $user */
-        $user = auth()->user();
-
-        $swapWith = $user->links()->where('sort', '=', $newOrder)->first();
+        $swapWith = $this->user->links()->where('sort', '=', $newOrder)->first();
 
         $this->fill(['sort' => $newOrder])->save();
         $swapWith->fill(['sort' => $order])->save();
