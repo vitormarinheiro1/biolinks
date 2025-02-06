@@ -6,6 +6,7 @@
     @endif
 
     <a href="{{ route('links.create') }}">Criar</a>
+    <a href="{{ route('profile') }}">Update Profile</a>
 
     <ul>
         @foreach ($links as $link)
