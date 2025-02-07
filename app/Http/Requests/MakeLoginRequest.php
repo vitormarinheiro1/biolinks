@@ -4,11 +4,12 @@ namespace App\Http\Requests;
 
 use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 /**
  * Hande Login Request
- * 
+ *
  * @property-read string $email
  * @property-read string $password
  */
@@ -45,7 +46,7 @@ class MakeLoginRequest extends FormRequest
 
             if (Hash::check($this->password, $user->password)) {
 
-                auth()->login($user);
+                Auth::login($user);
 
                 return true;
             }

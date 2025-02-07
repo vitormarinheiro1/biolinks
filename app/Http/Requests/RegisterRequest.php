@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\Password;
 
 /**
@@ -35,11 +36,12 @@ class RegisterRequest extends FormRequest
         ];
     }
 
-    public function tryToRegister(){
+    public function tryToRegister()
+    {
         $user = User::query()->create($this->validated());
 
-        auth()->login($user);
+        Auth::login($user);
 
-        return true;    
+        return true;
     }
 }

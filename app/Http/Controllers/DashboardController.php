@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
@@ -11,7 +12,8 @@ class DashboardController extends Controller
     {
 
         /** @var User $user */
-        $user = auth()->user();
+
+        $user = Auth::user();
 
 
         return view('dashboard', [

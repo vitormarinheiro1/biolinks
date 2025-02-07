@@ -6,6 +6,7 @@ use App\Models\Link;
 use App\Http\Requests\StoreLinkRequest;
 use App\Http\Requests\UpdateLinkRequest;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class LinkController extends Controller
 {
@@ -35,7 +36,7 @@ class LinkController extends Controller
 
         /** @var User $user */
         // com o usuario logado ele possui links e eu quero criar um link pra ele
-        $user = auth()->user();
+        $user = Auth::user();
         $user->links()->create($request->validated());
 
         return to_route('dashboard');
