@@ -2,12 +2,17 @@
     <h1>Profile</h1>
 
     @if($message = session('message'))
-        <div>{{ $message }}</div>
+    <div>{{ $message }}</div>
     @endif
 
-    <form action="{{ route('profile') }}" method="post">
+    <form action="{{ route('profile') }}" method="post" enctype="multipart/form-data">
         @csrf
         @METHOD('PUT')
+
+        <div>
+            <img src="/storage/{{ $user->photo }}" alt="Profile Picture">
+            <input type="file" name="photo" />
+        </div>
 
         <div>
             <input name="name" placeholder="Nome" value="{{ old('name', $user->name) }}" />
